@@ -422,6 +422,29 @@ class Rop_Rest_Api {
 	}
 
 	/**
+	 * API method called to retrieve the authors
+	 * for the selected post types.
+	 *
+	 * @SuppressWarnings(PHPMD.UnusedPrivateMethod) As it is called dynamically.
+	 *
+	 * @since   8.0.0
+	 * @access  private
+	 *
+	 * @return array
+	 */
+	private function get_authors() {
+		$settings_model = new Rop_Settings_Model();
+		$authors     = $settings_model->get_available_authors();
+		$this->response->set_code( '400' );
+		if ( $authors != false ) {
+			$this->response->set_code( '200' )
+						   ->set_data( $authors );
+		}
+
+		return $this->response->to_array();
+	}
+
+	/**
 	 * API method to exclude single post
 	 *
 	 * @SuppressWarnings(PHPMD.UnusedPrivateMethod) As it is called dynamically.

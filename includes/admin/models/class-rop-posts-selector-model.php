@@ -144,6 +144,26 @@ class Rop_Posts_Selector_Model extends Rop_Model_Abstract {
 	}
 
 	/**
+	 * Method to retrieve authors.
+	 *
+	 * @since   8.1.3
+	 * @access  public
+	 *
+	 * @return array
+	 */
+public function get_authors(){
+	$args = array(
+		'html' => false,
+	);
+
+	$authors = wp_list_authors( $args );
+	$authors = explode( ',', $authors );
+
+	return $authors;
+}
+
+
+	/**
 	 * Utility method to ignore certain taxonomies.
 	 *
 	 * @param array $taxes Taxonomies to filter.

@@ -136,6 +136,9 @@ class Rop_I18n {
 					'tweet-old-post'
 				),
 				'taxonomies_exclude'          => __( 'Exclude?', 'tweet-old-post' ),
+				'authors_title'          			=> __( 'Authors', 'tweet-old-post' ),
+				'authors_desc'          			=> __( 'Authors available for the selected post types. Use to include or exclude posts.', 'tweet-old-post' ),
+				'authors_exclude'          		=> __( 'Exclude?', 'tweet-old-post' ),
 				'posts_title'                 => __( 'Posts', 'tweet-old-post' ),
 				'posts_desc'                  => __( 'Posts excluded from sharing, filtered based on previous selections.', 'tweet-old-post' ),
 				'ga_title'                    => __( 'Enable Google Analytics Tracking', 'tweet-old-post' ),

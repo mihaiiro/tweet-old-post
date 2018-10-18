@@ -110,6 +110,30 @@
 
 				</div>
 
+				<!-- Authors -->
+				<div class="columns py-2">
+					<div class="column col-6 col-sm-12 vertical-align">
+						<b>{{labels.authors_title}}</b>
+						<p class="text-gray">{{labels.authors_desc}}</p>
+					</div>
+					<div class="column col-6 col-sm-12 vertical-align text-left">
+						<div class="input-group">
+							<multiple-select :options="authors"
+							                 :selected="generalSettings.selected_authors"
+							                 :changed-selection="updatedAuthors"></multiple-select>
+							<span class="input-group-addon vertical-align">
+								<label class="form-checkbox">
+									<input type="checkbox" v-model="generalSettings.exclude_authors"/>
+									<i class="form-icon"></i>{{labels.authors_exclude}}
+								</label>
+							</span>
+
+						</div>
+
+					</div>
+
+				</div>
+
 				<span class="divider"></span>
 
 				<!-- Google Analytics -->
@@ -211,6 +235,9 @@
 			taxonomies: function () {
 				return this.$store.state.generalSettings.available_taxonomies
 			},
+			authors: function () {
+				return this.$store.state.generalSettings.available_authors
+			},
 			checkMediaPostType() {
 				let post_type = this.$store.state.generalSettings.selected_post_types;
 
@@ -264,9 +291,19 @@
 				}
 				this.$store.commit('updateState', {stateData: data, requestName: 'update_selected_taxonomies'})
 			},
+
+			updatedAuthors(data) {
+				let authors = []
+				for (let index in data) {
+					authors.push(data[index].value)
+				}
+				this.$store.commit('updateState', {stateData: data, requestName: 'update_selected_authors'})
+			},
+
 			saveGeneralSettings() {
 				let postTypesSelected = this.$store.state.generalSettings.selected_post_types
 				let taxonomiesSelected = this.$store.state.generalSettings.selected_taxonomies
+				let authorsSelected = this.$store.state.generalSettings.selected_authors
 				let excludeTaxonomies = this.generalSettings.exclude_taxonomies
 				let postsSelected = this.generalSettings.selected_posts
 				this.is_loading = true;
@@ -283,6 +320,7 @@
 						more_than_once: this.generalSettings.more_than_once,
 						selected_post_types: postTypesSelected,
 						selected_taxonomies: taxonomiesSelected,
+						selected_authors: authorsSelected,
 						exclude_taxonomies: excludeTaxonomies,
 						ga_tracking: this.generalSettings.ga_tracking,
 						custom_messages: this.generalSettings.custom_messages,

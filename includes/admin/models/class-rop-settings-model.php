@@ -110,6 +110,7 @@ class Rop_Settings_Model extends Rop_Model_Abstract {
 		if ( $include_dynamic ) {
 			$this->settings['available_taxonomies'] = $this->get_available_taxonomies( $this->get_selected_post_types() );
 			$this->settings['available_post_types'] = $this->get_available_post_types();
+			$this->settings['available_authors']    = $this->get_available_authors();
 		}
 
 		return $this->settings;
@@ -127,6 +128,20 @@ class Rop_Settings_Model extends Rop_Model_Abstract {
 		$taxonomies    = $post_selector->get_taxonomies( $selected_post_types );
 
 		return $taxonomies;
+	}
+
+	/**
+	 * Defines the available authors.
+	 *
+	 * @since   8.1.3
+	 * @access  public
+	 * @return array
+	 */
+	public function get_available_authors() {
+		$post_selector = new Rop_Posts_Selector_Model();
+		$authors    = $post_selector->get_authors();
+
+		return $authors;
 	}
 
 	/**
