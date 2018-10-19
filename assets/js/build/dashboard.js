@@ -16684,6 +16684,17 @@ exports.default = new _vuex2.default.Store({
 						}
 					}
 					break;
+				case 'update_selected_authors':
+					state.generalSettings.selected_authors = stateData;
+					for (var _index2 in state.generalSettings.available_authors) {
+						state.generalSettings.available_authors[_index2].selected = false;
+						for (var _indexSelected2 in stateData) {
+							if (state.generalSettings.available_authors[_index2].value === stateData[_indexSelected2].value || state.generalSettings.available_authors[_index2].parent === stateData[_indexSelected2].value) {
+								state.generalSettings.available_authors[_index2].selected = true;
+							}
+						}
+					}
+					break;
 				case 'update_selected_posts':
 					state.generalSettings.selected_posts = stateData;
 					break;

@@ -147,6 +147,17 @@ export default new Vuex.Store( {
 					}
 				}
 				break
+			case 'update_selected_authors':
+				state.generalSettings.selected_authors = stateData
+				for ( let index in state.generalSettings.available_authors ) {
+					state.generalSettings.available_authors[index].selected = false
+					for ( let indexSelected in stateData ) {
+						if ( state.generalSettings.available_authors[index].value === stateData[indexSelected].value || state.generalSettings.available_authors[index].parent === stateData[indexSelected].value ) {
+							state.generalSettings.available_authors[index].selected = true
+						}
+					}
+				}
+				break
 			case 'update_selected_posts':
 				state.generalSettings.selected_posts = stateData
 				break
