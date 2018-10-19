@@ -152,14 +152,18 @@ class Rop_Posts_Selector_Model extends Rop_Model_Abstract {
 	 * @return array
 	 */
 public function get_authors(){
-	$args = array(
-		'html' => false,
-	);
+	// $args = array(
+	// 	'html' => false,
+	// );
+	//
+	// $authors = wp_list_authors( $args );
+	// $authors = explode( ',', $authors );
+	//
+	// return $authors;
 
-	$authors = wp_list_authors( $args );
-	$authors = explode( ',', $authors );
+$authors = array('john', 'jane');
 
-	return $authors;
+return $authors;
 }
 
 
