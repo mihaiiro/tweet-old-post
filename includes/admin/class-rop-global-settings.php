@@ -137,6 +137,7 @@ class Rop_Global_Settings {
 		'selected_post_types'  => array( array( 'name' => 'Posts', 'value' => 'post', 'selected' => true ) ),
 		'available_taxonomies' => array(),
 		'selected_taxonomies'  => array(),
+		'selected_authors'  => array(),
 		'exclude_taxonomies'   => false,
 		'available_posts'      => array(), // get_posts(),
 		'selected_posts'       => array(),
