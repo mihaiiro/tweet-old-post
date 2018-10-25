@@ -171,6 +171,23 @@
 
 								<span class="divider"></span>
 
+							<div class="columns py-2" v-if="isInstantShare">
+									<div class="column col-6 col-sm-12 vertical-align rop-control">
+										<b>{{labels.instant_share_default_title}}</b>
+										<p class="text-gray">{{labels.instant_share_default_desc}}</p>
+									</div>
+									<div class="column col-6 col-sm-12 vertical-align text-left rop-control">
+										<div class="form-group">
+											<label class="form-checkbox">
+												<input type="checkbox" v-model="generalSettings.instant_share_default"/>
+												<i class="form-icon"></i>{{labels.instant_share_default_yes}}
+											</label>
+										</div>
+									</div>
+								</div>
+
+								<span class="divider" v-if="isInstantShare"></span>
+
 				<div class="columns py-2" :class="'rop-control-container-'+isPro">
 					<div class="column col-6 col-sm-12 vertical-align rop-control">
 						<b>{{labels.custom_share_title}}</b>
@@ -192,6 +209,22 @@
 					</div>
 				</div>
 				<span class="divider"></span>
+
+				<div class="columns py-2">
+						<div class="column col-6 col-sm-12 vertical-align rop-control">
+							<b>{{labels.housekeeping}}</b>
+							<p class="text-gray">{{labels.housekeeping_desc}}</p>
+						</div>
+						<div class="column col-6 col-sm-12 vertical-align text-left rop-control">
+							<div class="form-group">
+								<label class="form-checkbox">
+									<input type="checkbox" v-model="generalSettings.housekeeping"/>
+									<i class="form-icon"></i>{{labels.housekeeping_yes}}
+								</label>
+							</div>
+						</div>
+					</div>
+					<span class="divider"></span>
 
 			</div>
 		</div>
@@ -252,6 +285,9 @@
 				var result = post_type.map(a => a.value);
 				return (result.indexOf('attachment') > -1);
 			},
+   isInstantShare: function() {
+       return this.$store.state.generalSettings.instant_share;
+   }
 		},
 		mounted: function () {
 			this.$log.info('In General Settings state ');
@@ -324,7 +360,9 @@
 						exclude_taxonomies: excludeTaxonomies,
 						ga_tracking: this.generalSettings.ga_tracking,
 						custom_messages: this.generalSettings.custom_messages,
-						instant_share: this.generalSettings.instant_share
+						instant_share: this.generalSettings.instant_share,
+						instant_share_default: this.generalSettings.instant_share_default,
+						housekeeping: this.generalSettings.housekeeping,
 					}
 				}).then(response => {
 					this.is_loading = false;

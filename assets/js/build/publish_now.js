@@ -3827,7 +3827,7 @@ module.exports = {
 	created: function created() {},
 
 	computed: {
-		share_on_update: function share_on_update() {
+		share_on_update_enabled: function share_on_update_enabled() {
 			return this.$store.state.publish_now.action === true;
 		}
 	},
@@ -3837,7 +3837,7 @@ module.exports = {
 			labels: this.$store.state.labels.publish_now,
 			accounts: this.$store.state.publish_now.accounts,
 			active: this.$store.state.publish_now.active,
-			share_on_update_enabled: this.$store.state.publish_now.action === true
+			share_on_update_enabled: this.$store.state.publish_now.action
 		};
 	},
 	components: {
@@ -3886,7 +3886,7 @@ module.exports = {
 //
 // 			<div class="form-group rop-publish-now-accounts-wrapper" v-if="share_on_update_enabled" v-for="(account, key) in accounts">
 // 				<label class="form-checkbox rop-publish-now-account">
-// 					<input type="checkbox" :checked="active != null && active.indexOf(key) >= 0" :value="key"
+// 					<input type="checkbox" :checked="(active != null && active.indexOf(key) >= 0) || share_on_update_enabled" :value="key"
 // 					       name="publish_now_accounts[]"/>
 // 					<i class=" fa " :class="getServiceClass(account.service)"></i> {{account.user}}
 // 				</label>
@@ -3903,7 +3903,7 @@ module.exports = {
 /***/ 309:
 /***/ (function(module, exports) {
 
-module.exports = "\r\n\t<div class=\"rop-control-container\" v-if=\"Object.keys(accounts).length > 0\" >\r\n\t\t\r\n\t\t<!-- Share on update -->\r\n\t\t<fieldset>\r\n\t\t\t<input type=\"checkbox\" :checked=\"share_on_update_enabled\"\r\n\t\t\t       v-on:click=\"share_on_update_enabled = !share_on_update_enabled\" name=\"publish_now\" value=\"1\"/>\r\n\t\t\t<label class=\"form-checkbox\">\r\n\t\t\t\t\r\n\t\t\t\t  <span v-html=\" labels.share_on_update\"></span>\r\n\t\t\t</label>\r\n\t\t\t\r\n\t\t\t<div class=\"form-group rop-publish-now-accounts-wrapper\" v-if=\"share_on_update_enabled\" v-for=\"(account, key) in accounts\">\r\n\t\t\t\t<label class=\"form-checkbox rop-publish-now-account\">\r\n\t\t\t\t\t<input type=\"checkbox\" :checked=\"active != null && active.indexOf(key) >= 0\" :value=\"key\"\r\n\t\t\t\t\t       name=\"publish_now_accounts[]\"/>\r\n\t\t\t\t\t<i class=\" fa \" :class=\"getServiceClass(account.service)\"></i> {{account.user}}\r\n\t\t\t\t</label>\r\n\t\t\t</div>\r\n\t\t</fieldset>\r\n\t\r\n\t</div>\r\n";
+module.exports = "\r\n\t<div class=\"rop-control-container\" v-if=\"Object.keys(accounts).length > 0\" >\r\n\t\t\r\n\t\t<!-- Share on update -->\r\n\t\t<fieldset>\r\n\t\t\t<input type=\"checkbox\" :checked=\"share_on_update_enabled\"\r\n\t\t\t       v-on:click=\"share_on_update_enabled = !share_on_update_enabled\" name=\"publish_now\" value=\"1\"/>\r\n\t\t\t<label class=\"form-checkbox\">\r\n\t\t\t\t\r\n\t\t\t\t  <span v-html=\" labels.share_on_update\"></span>\r\n\t\t\t</label>\r\n\t\t\t\r\n\t\t\t<div class=\"form-group rop-publish-now-accounts-wrapper\" v-if=\"share_on_update_enabled\" v-for=\"(account, key) in accounts\">\r\n\t\t\t\t<label class=\"form-checkbox rop-publish-now-account\">\r\n\t\t\t\t\t<input type=\"checkbox\" :checked=\"(active != null && active.indexOf(key) >= 0) || share_on_update_enabled\" :value=\"key\"\r\n\t\t\t\t\t       name=\"publish_now_accounts[]\"/>\r\n\t\t\t\t\t<i class=\" fa \" :class=\"getServiceClass(account.service)\"></i> {{account.user}}\r\n\t\t\t\t</label>\r\n\t\t\t</div>\r\n\t\t</fieldset>\r\n\t\r\n\t</div>\r\n";
 
 /***/ }),
 
