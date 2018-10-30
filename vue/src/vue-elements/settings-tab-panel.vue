@@ -266,10 +266,10 @@
 				return this.$store.state.generalSettings.available_post_types;
 			},
 			taxonomies: function () {
-				return this.$store.state.generalSettings.available_taxonomies
+				return this.$store.state.generalSettings.available_taxonomies;
 			},
 			authors: function () {
-				return this.$store.state.generalSettings.available_authors
+				return this.$store.state.generalSettings.available_authors;
 			},
 			checkMediaPostType() {
 				let post_type = this.$store.state.generalSettings.selected_post_types;
