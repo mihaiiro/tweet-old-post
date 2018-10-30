@@ -160,7 +160,8 @@ public function get_authors(){
 	// $authors = explode( ',', $authors );
 	//
 	// return $authors;
-
+	
+//simple array for testing
 $authors = array('john', 'jane');
 
 return $authors;

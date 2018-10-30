@@ -34591,6 +34591,7 @@ module.exports = {
 			var taxonomiesSelected = this.$store.state.generalSettings.selected_taxonomies;
 			var authorsSelected = this.$store.state.generalSettings.selected_authors;
 			var excludeTaxonomies = this.generalSettings.exclude_taxonomies;
+			var excludeAuthors = this.generalSettings.exclude_authors;
 			var postsSelected = this.generalSettings.selected_posts;
 			this.is_loading = true;
 			this.$log.info('Sending request for saving general settings..');
@@ -34608,6 +34609,7 @@ module.exports = {
 					selected_taxonomies: taxonomiesSelected,
 					selected_authors: authorsSelected,
 					exclude_taxonomies: excludeTaxonomies,
+					exclude_authors: excludeAuthors,
 					ga_tracking: this.generalSettings.ga_tracking,
 					custom_messages: this.generalSettings.custom_messages,
 					instant_share: this.generalSettings.instant_share,

@@ -110,7 +110,9 @@ class Rop_Settings_Model extends Rop_Model_Abstract {
 		if ( $include_dynamic ) {
 			$this->settings['available_taxonomies'] = $this->get_available_taxonomies( $this->get_selected_post_types() );
 			$this->settings['available_post_types'] = $this->get_available_post_types();
-			$this->settings['available_authors']    = $this->get_available_authors();
+
+			//Uncommenting below gives a undefined error in JS console
+			// $this->settings['available_authors']    = $this->get_available_authors();
 		}
 
 		return $this->settings;

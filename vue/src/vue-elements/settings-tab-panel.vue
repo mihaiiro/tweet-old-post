@@ -341,6 +341,7 @@
 				let taxonomiesSelected = this.$store.state.generalSettings.selected_taxonomies
 				let authorsSelected = this.$store.state.generalSettings.selected_authors
 				let excludeTaxonomies = this.generalSettings.exclude_taxonomies
+				let excludeAuthors = this.generalSettings.exclude_authors
 				let postsSelected = this.generalSettings.selected_posts
 				this.is_loading = true;
 				this.$log.info('Sending request for saving general settings..');
@@ -358,6 +359,7 @@
 						selected_taxonomies: taxonomiesSelected,
 						selected_authors: authorsSelected,
 						exclude_taxonomies: excludeTaxonomies,
+						exclude_authors: excludeAuthors,
 						ga_tracking: this.generalSettings.ga_tracking,
 						custom_messages: this.generalSettings.custom_messages,
 						instant_share: this.generalSettings.instant_share,
