@@ -124,6 +124,7 @@ class Rop {
 	private function define_admin_hooks() {
 
 		$plugin_admin = new Rop_Admin( $this->get_plugin_name(), $this->get_version() );
+		$test_class = new myClass;
 
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'legacy_auth', 2 );
 		$this->loader->add_action( 'admin_notices', $plugin_admin, 'rop_php_notice' );
